@@ -4,6 +4,9 @@ import lombok.Data;
 
 @Data
 public class JsonResults {
-    public int found,notFound,notApplicable,notResponding;
+    public long found = 0;
+    public long notFound = 0;
+    public long notApplicable = 0;
+    public long notResponding = 0;
     public Organizations[] organizations;
 }

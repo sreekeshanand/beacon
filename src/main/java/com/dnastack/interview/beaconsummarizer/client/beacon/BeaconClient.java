@@ -1,9 +1,7 @@
 package com.dnastack.interview.beaconsummarizer.client.beacon;
 
 import com.dnastack.interview.beaconsummarizer.model.Beacon;
-import com.dnastack.interview.beaconsummarizer.model.BeaconSearchParm;
 import com.dnastack.interview.beaconsummarizer.model.Responses;
-import feign.Param;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

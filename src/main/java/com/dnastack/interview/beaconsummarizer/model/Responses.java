@@ -1,8 +1,8 @@
 package com.dnastack.interview.beaconsummarizer.model;
 
-import lombok.Value;
+import lombok.Data;
 
-@Value
+@Data
 public class Responses {
     public Beacon beacon;
     public String response;

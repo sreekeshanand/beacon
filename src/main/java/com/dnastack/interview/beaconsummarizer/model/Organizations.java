@@ -10,6 +10,8 @@ public class Organizations implements Comparable{
 
     public int compareTo(Object o) {
 
-        return (this.getBeacons() < ((Organizations) o).getBeacons() ? -1 : (this.getBeacons() == ((Organizations) o).getBeacons() ? 0 : 1));
+        return (this.getBeacons()
+                    < ((Organizations) o).getBeacons() ? -1
+                : (this.getBeacons() == ((Organizations) o).getBeacons() ? 0 : 1));
     }
 }
