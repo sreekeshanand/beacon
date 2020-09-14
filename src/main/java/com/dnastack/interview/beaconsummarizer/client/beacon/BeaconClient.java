@@ -1,7 +1,10 @@
 package com.dnastack.interview.beaconsummarizer.client.beacon;
 
+import com.dnastack.interview.beaconsummarizer.model.Beacon;
+import com.dnastack.interview.beaconsummarizer.model.Responses;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -16,4 +19,13 @@ public interface BeaconClient {
     @GetMapping("/api/organizations")
     List<Organization> getOrganizations();
 
+    @GetMapping("api/responses")
+    List<Responses>    getResponses (@RequestParam String ref,
+                                  @RequestParam String chrom,
+                                  @RequestParam int pos,
+                                  @RequestParam String allele,
+                                  @RequestParam String[] beacon);
+
+    @GetMapping("api/beacons")
+    List<Beacon> getBeacons();
 }
