@@ -1,6 +1,5 @@
 package com.dnastack.interview.beaconsummarizer.model;
 
-import lombok.Data;
 import lombok.Value;
 
 @Value
