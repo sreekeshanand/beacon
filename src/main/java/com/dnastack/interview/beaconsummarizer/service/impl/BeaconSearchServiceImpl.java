@@ -27,7 +27,7 @@ public class BeaconSearchServiceImpl implements BeaconSearchService {
 
         List<String> beaconLists = getBeaconLists();
         List<List<Responses>> jsonResponse = new ArrayList<>();
-// Get Beacon List
+        // Get Beacon List
         beaconLists.forEach(item -> {
             searchParm.setBeacon(new String[]{item});
             List<Responses> results = beaconClient.getResponses(searchParm.getAllele(),
@@ -66,12 +66,33 @@ public class BeaconSearchServiceImpl implements BeaconSearchService {
 
 
         results.setOrganizations(orgList.stream().toArray(Organizations[]::new));
-        results.setNotFound( flattenResponse.stream().filter(j -> j.response == null).count());
-
-
+        try {
+            results.setNotFound(flattenResponse.stream()
+                    .filter(j -> j.response == null).count());
+        } catch (NullPointerException e) {
+            results.setNotFound(0);
+        }
+        try {
+            results.setFound(flattenResponse.stream()
+                    .filter(j -> j.response.equalsIgnoreCase("true")).count());
+        } catch (NullPointerException e) {
+            results.setFound(0);
+        }
+        try {
+            results.setNotResponding(flattenResponse.stream()
+                    .filter(j -> j.response.equalsIgnoreCase("false")).count());
+        } catch (NullPointerException e) {
+            results.setNotResponding(0);
+        }
+        try {
+            results.setNotApplicable(flattenResponse.stream()
+                    .filter(j -> j.response.equalsIgnoreCase("Error")).count());
+        } catch (NullPointerException e) {
+            results.setNotApplicable(0);
+        }
 
 //  Throwing Null pointer error as response is only having null been saved
-      //        results.setFound( flattenResponse.stream().filter(j -> j.response.equalsIgnoreCase("true")).count());
+        //        results.setFound( flattenResponse.stream().filter(j -> j.response.equalsIgnoreCase("true")).count());
 
 
         return results;

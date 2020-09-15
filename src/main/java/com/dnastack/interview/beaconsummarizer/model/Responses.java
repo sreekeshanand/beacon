@@ -6,5 +6,4 @@ import lombok.Data;
 public class Responses {
     public Beacon beacon;
     public String response;
-
 }
